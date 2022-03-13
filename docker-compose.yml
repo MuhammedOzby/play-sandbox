@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  nodejs-simple:
+    container_name: sipmle-app
+    image: node:16.14-alpine3.14
+    volumes:
+      - ./:/opt/node-app
+    ports:
+      - 3001:3000
+    environment:
+      - PORT=3000
+      - DB_NAME=postgres
+      - DB_PASS=365G.24s
+    links:
+      - postgresql:postgres
+    working_dir: /opt/node-app
+    tty: true
+  postgresql:
+    container_name: simple-app-postgres
+    image: postgres
+    volumes:
+      - first-test:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=365G.24s
+    ports:
+      - 5432:5432
+volumes:
+  first-test:
